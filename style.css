@@ -2041,6 +2041,274 @@ footer p {
   }
 }
 ```
+```css
+/* ============================= */
+/* LANGUAGE EXPLORER */
+/* ============================= */
+
+.language-explorer {
+  display: none;
+  min-height: 800px;
+  padding: 75px 7%;
+  background: #f8f8f6;
+}
+
+.explorer-header {
+  max-width: 1100px;
+  margin: 0 auto 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.explorer-header h2 {
+  font-size: 48px;
+  letter-spacing: -2px;
+  margin: 7px 0;
+}
+
+.explorer-header p {
+  color: #777;
+  font-size: 14px;
+}
+
+
+/* SEARCH */
+
+.language-search {
+  max-width: 1100px;
+  margin: 0 auto 25px;
+  position: relative;
+}
+
+.language-search span {
+  position: absolute;
+  left: 15px;
+  top: 12px;
+  font-size: 20px;
+  color: #888;
+}
+
+.language-search input {
+  width: 100%;
+  padding: 14px 15px 14px 45px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+  background: white;
+  font-size: 13px;
+}
+
+.language-search input:focus {
+  border-color: #999;
+}
+
+
+/* GRID */
+
+.explorer-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.explorer-language-card {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  padding: 22px;
+  background: white;
+  border: 1px solid #e3e3de;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.explorer-language-card:hover {
+  transform: translateY(-3px);
+  border-color: #aaa;
+}
+
+.explorer-flag {
+  font-size: 38px;
+}
+
+.explorer-info {
+  flex: 1;
+}
+
+.explorer-info span {
+  font-size: 8px;
+  color: #999;
+  letter-spacing: 1.3px;
+  font-weight: bold;
+}
+
+.explorer-info h3 {
+  margin: 3px 0;
+  font-size: 19px;
+}
+
+.explorer-info p {
+  margin: 0;
+  color: #888;
+  font-size: 11px;
+}
+
+.explorer-arrow {
+  font-size: 18px;
+  color: #999;
+}
+
+.no-language-results {
+  display: none;
+  max-width: 1100px;
+  margin: 35px auto;
+  text-align: center;
+  color: #888;
+}
+
+
+/* ============================= */
+/* LANGUAGE OVERVIEW */
+/* ============================= */
+
+.language-overview {
+  display: none;
+  min-height: 800px;
+  padding: 65px 7%;
+  background: #f8f8f6;
+}
+
+.language-overview-top {
+  max-width: 900px;
+  margin: auto;
+}
+
+.selected-language-hero {
+  max-width: 900px;
+  margin: 50px auto 45px;
+}
+
+.selected-language-flag {
+  font-size: 55px;
+  margin-bottom: 15px;
+}
+
+.selected-language-hero h2 {
+  font-size: 58px;
+  letter-spacing: -2px;
+  margin: 5px 0;
+}
+
+.selected-language-hero p {
+  color: #777;
+}
+
+
+/* LEVEL GRID */
+
+.language-level-grid {
+  max-width: 900px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.level-card {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  padding: 23px;
+  background: white;
+  border: 1px solid #e3e3de;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.level-card:hover {
+  transform: translateY(-3px);
+  border-color: #999;
+}
+
+.level-number {
+  width: 55px;
+  height: 55px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #151515;
+  color: white;
+  border-radius: 13px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.level-card div:nth-child(2) {
+  flex: 1;
+}
+
+.level-card span {
+  color: #999;
+  font-size: 8px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.level-card h3 {
+  font-size: 15px;
+  margin: 3px 0;
+}
+
+.level-card p {
+  color: #888;
+  font-size: 10px;
+  margin: 0;
+}
+
+.level-card > strong {
+  color: #999;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  .language-explorer,
+  .language-overview {
+    padding: 55px 5%;
+  }
+
+  .explorer-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .explorer-header h2 {
+    font-size: 39px;
+  }
+
+  .explorer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .language-level-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .selected-language-hero h2 {
+    font-size: 45px;
+  }
+
+}
+```
 
 
 
