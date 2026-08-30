@@ -433,6 +433,73 @@ function completeLesson() {
 
 }
 ```
+```javascript id="r8q4ms"
+/* ============================= */
+/* STUDENT DASHBOARD */
+/* ============================= */
+
+function openDashboard() {
+
+  // Hide normal homepage sections
+
+  const sectionsToHide = [
+    ".hero",
+    ".languages-section",
+    ".features-section",
+    ".cta-section",
+    ".learning-section",
+    ".lesson-dashboard",
+    ".lesson-interface"
+  ];
+
+  sectionsToHide.forEach(selector => {
+
+    const section =
+      document.querySelector(selector);
+
+    if (section) {
+      section.style.display = "none";
+    }
+
+  });
+
+
+  // Show dashboard
+
+  const dashboard =
+    document.getElementById("studentDashboard");
+
+  dashboard.style.display = "block";
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+function openDashboardCourse() {
+
+  const dashboard =
+    document.getElementById("studentDashboard");
+
+  dashboard.style.display = "none";
+
+  const lessonDashboard =
+    document.getElementById("lessonDashboard");
+
+  lessonDashboard.style.display = "block";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+```
+
 
 
 ```
