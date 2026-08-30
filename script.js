@@ -653,6 +653,478 @@ function openLanguageLevel(level) {
 
 }
 ```
+```javascript id="xq9m1d"
+/* ============================= */
+/* ADMIN PANEL */
+/* ============================= */
+
+const defaultLanguages = [
+  {
+    name: "German",
+    native: "Deutsch",
+    flag: "🇩🇪",
+    status: "Published"
+  },
+  {
+    name: "Spanish",
+    native: "Español",
+    flag: "🇪🇸",
+    status: "Published"
+  },
+  {
+    name: "French",
+    native: "Français",
+    flag: "🇫🇷",
+    status: "Published"
+  },
+  {
+    name: "Japanese",
+    native: "日本語",
+    flag: "🇯🇵",
+    status: "Published"
+  }
+];
+
+
+function getLanguages() {
+
+  const saved =
+    localStorage.getItem("tutorLanguages");
+
+  if (saved) {
+    return JSON.parse(saved);
+  }
+
+  localStorage.setItem(
+    "tutorLanguages",
+    JSON.stringify(defaultLanguages)
+  );
+
+  return defaultLanguages;
+}
+
+
+function saveLanguages(languages) {
+
+  localStorage.setItem(
+    "tutorLanguages",
+    JSON.stringify(languages)
+  );
+
+}
+
+
+function openAdminPanel() {
+
+  document.querySelectorAll("main > section")
+    .forEach(section => {
+      section.style.display = "none";
+    });
+
+
+  document.getElementById("adminPanel").style.display =
+    "block";
+
+
+  renderAdminLanguages();
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+function closeAdminPanel() {
+
+  document.getElementById("adminPanel").style.display =
+    "none";
+
+  document.querySelector(".hero").style.display =
+    "";
+
+  document.querySelector(".languages-section").style.display =
+    "";
+
+  document.querySelector(".features-section").style.display =
+    "";
+
+  document.querySelector(".cta-section").style.display =
+    "";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+function showAdminSection(sectionName) {
+
+  document.querySelectorAll(".admin-section")
+    .forEach(section => {
+      section.classList.remove("active");
+    });
+
+
+  document.querySelectorAll(".admin-nav-btn")
+    .forEach(button => {
+      button.classList.remove("active");
+    });
+
+
+  const section =
+    document.getElementById(
+      "admin" +
+      sectionName.charAt(0).toUpperCase() +
+      sectionName.slice(1)
+    );
+
+  if (section) {
+    section.classList.add("active");
+  }
+
+
+  event.currentTarget.classList.add("active");
+
+}
+
+
+function openAddLanguage() {
+
+  document.getElementById("addLanguageForm")
+    .classList.add("active");
+
+}
+
+
+function closeAddLanguage() {
+
+  document.getElementById("addLanguageForm")
+    .classList.remove("active");
+
+}
+
+
+function addNewLanguage() {
+
+  const name =
+    document.getElementById("newLanguageName").value.trim();
+
+  const native =
+    document.getElementById("newLanguageNative").value.trim();
+
+  const flag =
+    document.getElementById("newLanguageFlag").value.trim();
+
+  const status =
+    document.getElementById("newLanguageStatus").value;
+
+
+  if (!name || !native || !flag) {
+
+    alert("Please fill in all fields.");
+
+    return;
+
+  }
+
+
+  const languages = getLanguages();
+
+
+  const exists =
+    languages.some(
+      language =>
+        language.name.toLowerCase() === name.toLowerCase()
+    );
+
+
+  if (exists) {
+
+    alert("This language already exists.");
+
+    return;
+
+  }
+
+
+  languages.push({
+    name: name,
+    native: native,
+    flag: flag,
+    status:
+      status === "published"
+        ? "Published"
+        : "Draft"
+  });
+
+
+  saveLanguages(languages);
+
+  renderAdminLanguages();
+
+  addLanguageToStudentExplorer({
+    name: name,
+    native: native,
+    flag: flag,
+    status:
+      status === "published"
+        ? "Published"
+        : "Draft"
+  });
+
+
+  document.getElementById("newLanguageName").value = "";
+  document.getElementById("newLanguageNative").value = "";
+  document.getElementById("newLanguageFlag").value = "";
+
+  closeAddLanguage();
+
+
+  alert(
+    name +
+    " has been added successfully!"
+  );
+
+}
+
+
+function renderAdminLanguages() {
+
+  const container =
+    document.getElementById("adminLanguageList");
+
+  if (!container) return;
+
+
+  const languages =
+    getLanguages();
+
+
+  container.innerHTML = "";
+
+
+  languages.forEach((language, index) => {
+
+    const row =
+      document.createElement("div");
+
+    row.className =
+      "admin-language-row";
+
+
+    row.innerHTML = `
+
+      <div class="admin-language-name">
+
+        <span>${language.flag}</span>
+
+        <div>
+          <strong>${language.name}</strong>
+          <small>${language.native}</small>
+        </div>
+
+      </div>
+
+      <span class="admin-level-count">
+        A1 – C2
+      </span>
+
+      <span class="admin-status">
+        ${language.status}
+      </span>
+
+      <div class="admin-actions">
+
+        <button
+          onclick="editLanguage(${index})">
+          Edit
+        </button>
+
+        <button
+          onclick="deleteLanguage(${index})">
+          Delete
+        </button>
+
+      </div>
+
+    `;
+
+
+    container.appendChild(row);
+
+  });
+
+}
+
+
+function editLanguage(index) {
+
+  const languages =
+    getLanguages();
+
+  const language =
+    languages[index];
+
+
+  const newName =
+    prompt(
+      "Language name:",
+      language.name
+    );
+
+
+  if (!newName) return;
+
+
+  language.name =
+    newName.trim();
+
+
+  saveLanguages(languages);
+
+  renderAdminLanguages();
+
+  updateStudentLanguageCards();
+
+}
+
+
+function deleteLanguage(index) {
+
+  const languages =
+    getLanguages();
+
+  const language =
+    languages[index];
+
+
+  const confirmed =
+    confirm(
+      "Delete " +
+      language.name +
+      "?"
+    );
+
+
+  if (!confirmed) return;
+
+
+  languages.splice(index, 1);
+
+  saveLanguages(languages);
+
+  renderAdminLanguages();
+
+  updateStudentLanguageCards();
+
+}
+
+
+function addLanguageToStudentExplorer(language) {
+
+  const grid =
+    document.getElementById("explorerGrid");
+
+  if (!grid) return;
+
+
+  const card =
+    document.createElement("div");
+
+  card.className =
+    "explorer-language-card";
+
+  card.setAttribute(
+    "data-language",
+    language.name
+  );
+
+
+  card.onclick = function() {
+
+    selectLanguage(
+      language.name,
+      language.flag
+    );
+
+  };
+
+
+  card.innerHTML = `
+
+    <div class="explorer-flag">
+      ${language.flag}
+    </div>
+
+    <div class="explorer-info">
+
+      <span>
+        ${language.native.toUpperCase()}
+      </span>
+
+      <h3>
+        ${language.name}
+      </h3>
+
+      <p>
+        Beginner to advanced
+      </p>
+
+    </div>
+
+    <span class="explorer-arrow">
+      →
+    </span>
+
+  `;
+
+
+  grid.appendChild(card);
+
+}
+
+
+function updateStudentLanguageCards() {
+
+  const grid =
+    document.getElementById("explorerGrid");
+
+  if (!grid) return;
+
+
+  const languages =
+    getLanguages();
+
+
+  grid.innerHTML = "";
+
+
+  languages.forEach(language => {
+
+    if (language.status !== "Published") {
+      return;
+    }
+
+    addLanguageToStudentExplorer(language);
+
+  });
+
+}
+
+
+function openLessonCreator() {
+
+  alert(
+    "Lesson creator will be connected next."
+  );
+
+}
+```
+
 
 
 
