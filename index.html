@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TUTOR — Learn Languages Your Way</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="logo">TUTOR<span>.</span></div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#languages">Languages</a>
+      <a href="#features">Features</a>
+      <a href="#about">About</a>
+    </nav>
+
+    <div class="nav-buttons">
+      <button class="login-btn">Log in</button>
+      <button class="primary-btn">Get Started</button>
+    </div>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+      <div class="hero-content">
+
+        <div class="badge">
+          🌍 Learn without limits
+        </div>
+
+        <h1>
+          Learn a new language.<br>
+          <span>Your way.</span>
+        </h1>
+
+        <p>
+          Discover languages, build real skills, and learn at your own pace
+          with a simple and interactive learning experience.
+        </p>
+
+        <div class="hero-buttons">
+          <button class="primary-btn large-btn" onclick="scrollToLanguages()">
+            Explore Languages →
+          </button>
+
+          <button class="secondary-btn">
+            How it works
+          </button>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <strong>10+</strong>
+            <small>Languages</small>
+          </div>
+
+          <div>
+            <strong>A1–C2</strong>
+            <small>Levels</small>
+          </div>
+
+          <div>
+            <strong>24/7</strong>
+            <small>Learning</small>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="hero-card">
+
+        <div class="floating-card card-one">
+          <span>🇩🇪</span>
+          <div>
+            <strong>German</strong>
+            <small>A1 Beginner</small>
+          </div>
+        </div>
+
+        <div class="learning-card">
+
+          <div class="card-top">
+            <span>Your learning</span>
+            <span>🔥 7 days</span>
+          </div>
+
+          <h3>Continue learning</h3>
+
+          <div class="lesson">
+            <div class="lesson-icon">🇩🇪</div>
+
+            <div class="lesson-info">
+              <strong>German A1</strong>
+              <small>Greetings & Introductions</small>
+            </div>
+
+            <div class="progress">
+              72%
+            </div>
+          </div>
+
+          <button class="continue-btn">
+            Continue lesson →
+          </button>
+
+        </div>
+
+        <div class="floating-card card-two">
+          <span>✨</span>
+          <div>
+            <strong>Great progress!</strong>
+            <small>Keep going</small>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- LANGUAGES -->
+    <section class="languages-section" id="languages">
+
+      <div class="section-heading">
+        <div>
+          <span class="section-label">EXPLORE</span>
+          <h2>Choose your language</h2>
+        </div>
+
+        <button class="view-all-btn">
+          View all →
+        </button>
+      </div>
+
+      <div class="language-grid">
+
+        <div class="language-card" onclick="selectLanguage('German')">
+          <div class="flag">🇩🇪</div>
+          <div>
+            <h3>German</h3>
+            <p>Deutsch</p>
+          </div>
+          <span>→</span>
+        </div>
+
+        <div class="language-card" onclick="selectLanguage('English')">
+          <div class="flag">🇬🇧</div>
+          <div>
+            <h3>English</h3>
+            <p>English</p>
+          </div>
+          <span>→</span>
+        </div>
+
+        <div class="language-card" onclick="selectLanguage('Spanish')">
+          <div class="flag">🇪🇸</div>
+          <div>
+            <h3>Spanish</h3>
+            <p>Español</p>
+          </div>
+          <span>→</span>
+        </div>
+
+        <div class="language-card" onclick="selectLanguage('French')">
+          <div class="flag">🇫🇷</div>
+          <div>
+            <h3>French</h3>
+            <p>Français</p>
+          </div>
+          <span>→</span>
+        </div>
+
+        <div class="language-card" onclick="selectLanguage('Japanese')">
+          <div class="flag">🇯🇵</div>
+          <div>
+            <h3>Japanese</h3>
+            <p>日本語</p>
+          </div>
+          <span>→</span>
+        </div>
+
+        <div class="language-card" onclick="selectLanguage('Korean')">
+          <div class="flag">🇰🇷</div>
+          <div>
+            <h3>Korean</h3>
+            <p>한국어</p>
+          </div>
+          <span>→</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+    <section class="features-section" id="features">
+
+      <div class="section-heading centered">
+        <span class="section-label">WHY TUTOR</span>
+        <h2>Everything you need to learn</h2>
+        <p>
+          A clean, focused learning experience designed to help you
+          actually use the language.
+        </p>
+      </div>
+
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <div class="feature-icon">📚</div>
+          <h3>Structured Lessons</h3>
+          <p>
+            Learn step-by-step from beginner to advanced levels.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🧠</div>
+          <h3>Smart Practice</h3>
+          <p>
+            Practice vocabulary, grammar and concepts through interactive
+            exercises.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📈</div>
+          <h3>Track Progress</h3>
+          <p>
+            See your learning progress and know exactly what to improve.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🌍</div>
+          <h3>Multiple Languages</h3>
+          <p>
+            Learn different languages from one simple platform.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section class="cta-section">
+
+      <div>
+        <span class="section-label">START TODAY</span>
+        <h2>Your next language<br>starts here.</h2>
+        <p>
+          Choose a language and start building your skills.
+        </p>
+      </div>
+
+      <button class="primary-btn large-btn" onclick="scrollToLanguages()">
+        Start Learning →
+      </button>
+
+    </section>
+
+  </main>
+
+
+  <footer id="about">
+
+    <div class="footer-logo">TUTOR<span>.</span></div>
+
+    <p>
+      Learn languages. Build confidence. Go further.
+    </p>
+
+    <div class="footer-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <div class="copyright">
+      © 2026 TUTOR. All rights reserved.
+    </div>
+
+  </footer>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
