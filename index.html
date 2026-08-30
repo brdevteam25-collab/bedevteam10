@@ -272,6 +272,127 @@
       </button>
 
     </section>
+    ```html
+<!-- LANGUAGE LEARNING SECTION -->
+<section class="learning-section" id="learning">
+
+  <div class="learning-header">
+    <button class="back-btn" onclick="closeLearning()">← Back</button>
+
+    <div>
+      <span class="section-label">YOUR LEARNING PATH</span>
+      <h2 id="selectedLanguageTitle">German</h2>
+      <p id="selectedLanguageDescription">
+        Choose your level and start learning.
+      </p>
+    </div>
+  </div>
+
+
+  <!-- LEVELS -->
+  <div class="levels-container">
+
+    <div class="level-card active-level">
+      <div class="level-number">A1</div>
+
+      <div class="level-content">
+        <span class="level-tag">BEGINNER</span>
+        <h3>Starting Out</h3>
+        <p>
+          Learn basic words, phrases and everyday expressions.
+        </p>
+
+        <div class="level-progress">
+          <div class="progress-track">
+            <div class="progress-fill" style="width: 0%;"></div>
+          </div>
+          <span>0%</span>
+        </div>
+      </div>
+
+      <button onclick="openLevel('A1')">Start →</button>
+    </div>
+
+
+    <div class="level-card">
+      <div class="level-number">A2</div>
+
+      <div class="level-content">
+        <span class="level-tag">ELEMENTARY</span>
+        <h3>Building Skills</h3>
+        <p>
+          Understand common conversations and communicate simply.
+        </p>
+      </div>
+
+      <button onclick="openLevel('A2')">Start →</button>
+    </div>
+
+
+    <div class="level-card">
+      <div class="level-number">B1</div>
+
+      <div class="level-content">
+        <span class="level-tag">INTERMEDIATE</span>
+        <h3>Communicate</h3>
+        <p>
+          Express yourself confidently in everyday situations.
+        </p>
+      </div>
+
+      <button onclick="openLevel('B1')">Start →</button>
+    </div>
+
+
+    <div class="level-card">
+      <div class="level-number">B2</div>
+
+      <div class="level-content">
+        <span class="level-tag">UPPER INTERMEDIATE</span>
+        <h3>Speak Naturally</h3>
+        <p>
+          Handle detailed conversations and understand complex topics.
+        </p>
+      </div>
+
+      <button onclick="openLevel('B2')">Start →</button>
+    </div>
+
+
+    <div class="level-card">
+      <div class="level-number">C1</div>
+
+      <div class="level-content">
+        <span class="level-tag">ADVANCED</span>
+        <h3>Mastery</h3>
+        <p>
+          Communicate fluently and understand advanced content.
+        </p>
+      </div>
+
+      <button onclick="openLevel('C1')">Start →</button>
+    </div>
+
+
+    <div class="level-card">
+      <div class="level-number">C2</div>
+
+      <div class="level-content">
+        <span class="level-tag">PROFICIENCY</span>
+        <h3>Near Native</h3>
+        <p>
+          Understand almost everything and express yourself precisely.
+        </p>
+      </div>
+
+      <button onclick="openLevel('C2')">Start →</button>
+    </div>
+
+  </div>
+
+</section>
+```
+
 
   </main>
 
