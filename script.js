@@ -499,6 +499,161 @@ function openDashboardCourse() {
 
 }
 ```
+```javascript
+/* ============================= */
+/* LANGUAGE EXPLORER */
+/* ============================= */
+
+function openLanguageExplorer() {
+
+  document.getElementById("studentDashboard").style.display =
+    "none";
+
+  document.getElementById("languageExplorer").style.display =
+    "block";
+
+  document.getElementById("languageOverview").style.display =
+    "none";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+function filterLanguages() {
+
+  const search =
+    document
+      .getElementById("languageSearch")
+      .value
+      .toLowerCase();
+
+  const cards =
+    document.querySelectorAll(
+      ".explorer-language-card"
+    );
+
+  let found = false;
+
+
+  cards.forEach(card => {
+
+    const language =
+      card
+        .getAttribute("data-language")
+        .toLowerCase();
+
+    if (language.includes(search)) {
+
+      card.style.display = "flex";
+      found = true;
+
+    } else {
+
+      card.style.display = "none";
+
+    }
+
+  });
+
+
+  document.getElementById("noLanguageResults")
+    .style.display = found ? "none" : "block";
+
+}
+
+
+function selectLanguage(language, flag) {
+
+  document.getElementById("languageExplorer").style.display =
+    "none";
+
+  document.getElementById("languageOverview").style.display =
+    "block";
+
+  document.getElementById("selectedLanguageName").textContent =
+    language;
+
+  document.getElementById("selectedLanguageFlag").textContent =
+    flag;
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+function backToExplorer() {
+
+  document.getElementById("languageOverview").style.display =
+    "none";
+
+  document.getElementById("languageExplorer").style.display =
+    "block";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+function backFromExplorer() {
+
+  document.getElementById("languageExplorer").style.display =
+    "none";
+
+  document.getElementById("studentDashboard").style.display =
+    "block";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+function openLanguageLevel(level) {
+
+  /*
+   * For now this connects the selected language
+   * to our existing lesson dashboard.
+   */
+
+  const language =
+    document.getElementById("selectedLanguageName").textContent;
+
+
+  document.getElementById("languageOverview").style.display =
+    "none";
+
+  document.getElementById("lessonDashboard").style.display =
+    "block";
+
+
+  document.getElementById("lessonLevelLabel").textContent =
+    level + " • " + getLevelName(level);
+
+
+  document.getElementById("lessonLanguageTitle").textContent =
+    language;
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+```
+
 
 
 
