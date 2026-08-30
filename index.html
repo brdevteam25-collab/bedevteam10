@@ -1281,6 +1281,283 @@
 
 </section>
 ```
+    ```html
+<!-- ============================= -->
+<!-- AUTHENTICATION -->
+<!-- ============================= -->
+
+<section class="auth-section" id="authSection">
+
+  <div class="auth-container">
+
+    <!-- BRAND SIDE -->
+
+    <div class="auth-brand">
+
+      <div class="auth-brand-logo">
+        TUTOR<span>.</span>
+      </div>
+
+      <h2>
+        Your language<br>
+        journey starts here.
+      </h2>
+
+      <p>
+        Learn languages through structured lessons,
+        interactive practice and consistent progress.
+      </p>
+
+      <div class="auth-brand-points">
+
+        <div>
+          <span>✓</span>
+          <p>Learn at your own pace</p>
+        </div>
+
+        <div>
+          <span>✓</span>
+          <p>Track your progress</p>
+        </div>
+
+        <div>
+          <span>✓</span>
+          <p>Learn multiple languages</p>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- AUTH CARD -->
+
+    <div class="auth-card">
+
+      <!-- LOGIN -->
+
+      <div class="auth-form active" id="loginForm">
+
+        <button class="auth-back" onclick="closeAuth()">
+          ← Back
+        </button>
+
+        <div class="auth-heading">
+
+          <span class="section-label">
+            WELCOME BACK
+          </span>
+
+          <h2>Log in</h2>
+
+          <p>
+            Continue your learning journey.
+          </p>
+
+        </div>
+
+
+        <form onsubmit="handleLogin(event)">
+
+          <label>Email address</label>
+
+          <input
+            type="email"
+            id="loginEmail"
+            placeholder="you@example.com"
+            required
+          >
+
+
+          <label>Password</label>
+
+          <div class="password-wrapper">
+
+            <input
+              type="password"
+              id="loginPassword"
+              placeholder="Enter your password"
+              required
+            >
+
+            <button
+              type="button"
+              onclick="togglePassword('loginPassword')">
+              👁
+            </button>
+
+          </div>
+
+
+          <div class="auth-options">
+
+            <label class="remember-me">
+              <input type="checkbox">
+              Remember me
+            </label>
+
+            <button
+              type="button"
+              class="forgot-btn"
+              onclick="forgotPassword()">
+              Forgot password?
+            </button>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="auth-submit">
+            Log in →
+          </button>
+
+        </form>
+
+
+        <div class="auth-divider">
+          <span>or</span>
+        </div>
+
+
+        <button
+          class="social-login"
+          onclick="socialLogin('Google')">
+          <span>G</span>
+          Continue with Google
+        </button>
+
+
+        <p class="auth-switch">
+
+          Don't have an account?
+
+          <button onclick="showSignup()">
+            Create one
+          </button>
+
+        </p>
+
+      </div>
+
+
+      <!-- SIGNUP -->
+
+      <div class="auth-form" id="signupForm">
+
+        <button class="auth-back" onclick="closeAuth()">
+          ← Back
+        </button>
+
+        <div class="auth-heading">
+
+          <span class="section-label">
+            GET STARTED
+          </span>
+
+          <h2>Create account</h2>
+
+          <p>
+            Start your language learning journey.
+          </p>
+
+        </div>
+
+
+        <form onsubmit="handleSignup(event)">
+
+          <label>Full name</label>
+
+          <input
+            type="text"
+            id="signupName"
+            placeholder="Your name"
+            required
+          >
+
+
+          <label>Email address</label>
+
+          <input
+            type="email"
+            id="signupEmail"
+            placeholder="you@example.com"
+            required
+          >
+
+
+          <label>Password</label>
+
+          <div class="password-wrapper">
+
+            <input
+              type="password"
+              id="signupPassword"
+              placeholder="Create a password"
+              required
+            >
+
+            <button
+              type="button"
+              onclick="togglePassword('signupPassword')">
+              👁
+            </button>
+
+          </div>
+
+
+          <label class="terms-check">
+
+            <input type="checkbox" required>
+
+            <span>
+              I agree to the Terms of Service and Privacy Policy.
+            </span>
+
+          </label>
+
+
+          <button
+            type="submit"
+            class="auth-submit">
+            Create account →
+          </button>
+
+        </form>
+
+
+        <div class="auth-divider">
+          <span>or</span>
+        </div>
+
+
+        <button
+          class="social-login"
+          onclick="socialLogin('Google')">
+          <span>G</span>
+          Sign up with Google
+        </button>
+
+
+        <p class="auth-switch">
+
+          Already have an account?
+
+          <button onclick="showLogin()">
+            Log in
+          </button>
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+```
+
 
 
 
