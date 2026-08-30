@@ -1025,6 +1025,330 @@ footer p {
   }
 }
 ```
+```css
+/* ============================= */
+/* LESSON INTERFACE */
+/* ============================= */
+
+.lesson-interface {
+  display: none;
+  min-height: 750px;
+  padding: 70px 7%;
+  background: #f8f8f6;
+}
+
+.lesson-interface-top {
+  max-width: 900px;
+  margin: auto;
+}
+
+.lesson-meta {
+  display: flex;
+  gap: 8px;
+  margin-top: 25px;
+  color: #999;
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.lesson-hero {
+  max-width: 900px;
+  margin: 35px auto 45px;
+}
+
+.lesson-hero h2 {
+  font-size: clamp(40px, 5vw, 65px);
+  line-height: 1;
+  letter-spacing: -2px;
+  margin: 10px 0 15px;
+}
+
+.lesson-hero p {
+  max-width: 650px;
+  color: #777;
+  font-size: 16px;
+}
+
+
+/* TABS */
+
+.lesson-tabs {
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  gap: 5px;
+  padding: 5px;
+  background: #eaeae5;
+  border-radius: 11px;
+}
+
+.lesson-tab {
+  flex: 1;
+  padding: 12px;
+  background: transparent;
+  border-radius: 8px;
+  color: #666;
+  font-size: 13px;
+}
+
+.lesson-tab.active {
+  background: white;
+  color: #151515;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+
+/* CONTENT */
+
+.lesson-tab-content {
+  display: none;
+  max-width: 900px;
+  margin: 30px auto 0;
+}
+
+.lesson-tab-content.active {
+  display: block;
+}
+
+.content-card {
+  background: white;
+  border: 1px solid #e3e3de;
+  border-radius: 17px;
+  padding: 30px;
+  margin-bottom: 15px;
+}
+
+.content-label,
+.example-label {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: #999;
+  font-weight: bold;
+}
+
+.content-card h3 {
+  font-size: 25px;
+  margin: 8px 0;
+}
+
+.content-card p {
+  color: #777;
+  font-size: 14px;
+  max-width: 700px;
+}
+
+
+/* EXAMPLE */
+
+.example-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+  background: #151515;
+  color: white;
+  border-radius: 17px;
+  margin-bottom: 15px;
+}
+
+.example-language {
+  font-size: 45px;
+}
+
+.example-card h3 {
+  margin: 2px 0;
+  font-size: 25px;
+}
+
+.example-card p {
+  color: #aaa;
+  margin: 0;
+}
+
+.example-card button {
+  margin-left: auto;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: white;
+}
+
+
+/* NUMBERS */
+
+.number-examples {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.number-examples div {
+  padding: 18px;
+  background: #f4f4f0;
+  border-radius: 11px;
+  display: flex;
+  flex-direction: column;
+}
+
+.number-examples strong {
+  font-size: 17px;
+}
+
+.number-examples span {
+  color: #999;
+  font-size: 12px;
+}
+
+
+/* VOCABULARY */
+
+.vocabulary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 13px;
+}
+
+.vocabulary-card {
+  padding: 25px;
+  background: white;
+  border: 1px solid #e3e3de;
+  border-radius: 16px;
+}
+
+.word-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.word-top button {
+  background: #f1f1ed;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+}
+
+.vocabulary-card h3 {
+  font-size: 27px;
+  margin-top: 25px;
+}
+
+.vocabulary-card p {
+  color: #888;
+}
+
+
+/* PRACTICE */
+
+.practice-question,
+.quiz-card {
+  background: white;
+  border: 1px solid #e3e3de;
+  border-radius: 18px;
+  padding: 35px;
+}
+
+.practice-question h3,
+.quiz-card h3 {
+  font-size: 27px;
+  margin: 10px 0 30px;
+}
+
+.answer-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.answer-options button {
+  padding: 17px;
+  background: #f5f5f1;
+  border: 1px solid #e3e3de;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.answer-options button:hover {
+  border-color: #888;
+}
+
+.answer-options button.correct {
+  background: #151515;
+  color: white;
+}
+
+.answer-options button.wrong {
+  opacity: 0.5;
+}
+
+.practice-feedback {
+  min-height: 25px;
+  margin-top: 15px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+
+/* QUIZ */
+
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #999;
+  font-size: 12px;
+}
+
+.complete-lesson,
+.lesson-next {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .lesson-interface {
+    padding: 55px 5%;
+  }
+
+  .lesson-hero h2 {
+    font-size: 42px;
+  }
+
+  .lesson-tabs {
+    overflow-x: auto;
+  }
+
+  .lesson-tab {
+    min-width: 105px;
+  }
+
+  .content-card,
+  .example-card,
+  .practice-question,
+  .quiz-card {
+    padding: 22px;
+  }
+
+  .number-examples {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .vocabulary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .answer-options {
+    grid-template-columns: 1fr;
+  }
+}
+```
+
 
 ```
 
