@@ -745,5 +745,286 @@ footer p {
     padding: 8px 11px;
   }
 }
+```css
+/* ============================= */
+/* LESSON DASHBOARD */
+/* ============================= */
+
+.lesson-dashboard {
+  display: none;
+  min-height: 700px;
+  padding: 85px 7%;
+  background: #f8f8f6;
+}
+
+.lesson-top {
+  max-width: 900px;
+  margin: 0 auto 35px;
+}
+
+.lesson-title {
+  margin-top: 5px;
+}
+
+.lesson-title h2 {
+  font-size: 52px;
+  letter-spacing: -2px;
+  margin: 5px 0;
+}
+
+.lesson-title p {
+  color: #777;
+}
+
+
+/* PROGRESS */
+
+.learning-progress-card {
+  max-width: 900px;
+  margin: 0 auto 45px;
+  padding: 22px;
+  background: white;
+  border: 1px solid #e4e4df;
+  border-radius: 15px;
+}
+
+.learning-progress-card > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.learning-progress-card span {
+  color: #666;
+  font-size: 13px;
+}
+
+.learning-progress-card strong {
+  font-size: 15px;
+}
+
+.course-progress-track {
+  height: 7px;
+  background: #e8e8e4;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.course-progress-fill {
+  height: 100%;
+  background: #151515;
+  transition: width 0.5s ease;
+}
+
+.learning-progress-card small {
+  display: block;
+  margin-top: 9px;
+  color: #999;
+  font-size: 11px;
+}
+
+
+/* LESSON LIST */
+
+.lesson-list {
+  max-width: 900px;
+  margin: auto;
+}
+
+.lesson-list-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.lesson-list-heading h3 {
+  font-size: 28px;
+  margin-top: 5px;
+}
+
+.lesson-count {
+  font-size: 12px;
+  color: #888;
+}
+
+
+/* COURSE LESSON */
+
+.course-lesson {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  margin-bottom: 11px;
+  background: white;
+  border: 1px solid #e4e4df;
+  border-radius: 15px;
+  transition: 0.25s;
+}
+
+.course-lesson:hover {
+  transform: translateX(4px);
+  border-color: #aaa;
+}
+
+.course-lesson-number {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #f0f0ec;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.course-lesson-info {
+  flex: 1;
+}
+
+.course-lesson-info span {
+  color: #999;
+  font-size: 9px;
+  letter-spacing: 1.3px;
+  font-weight: bold;
+}
+
+.course-lesson-info h4 {
+  font-size: 17px;
+  margin: 2px 0;
+}
+
+.course-lesson-info p {
+  color: #777;
+  font-size: 12px;
+  margin: 0;
+}
+
+.course-lesson button {
+  padding: 10px 15px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid #ddd;
+}
+
+.course-lesson button:hover {
+  background: #151515;
+  color: white;
+}
+
+.completed-lesson .course-lesson-number {
+  background: #151515;
+  color: white;
+}
+
+.active-lesson {
+  border-color: #bbb;
+}
+
+.locked-lesson {
+  opacity: 0.55;
+}
+
+.locked-lesson button {
+  cursor: not-allowed;
+}
+
+
+/* QUICK PRACTICE */
+
+.quick-practice {
+  max-width: 900px;
+  margin: 45px auto 0;
+  padding: 30px;
+  border-radius: 18px;
+  background: #151515;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.quick-practice h3 {
+  font-size: 23px;
+  margin: 5px 0;
+}
+
+.quick-practice p {
+  color: #aaa;
+  font-size: 13px;
+}
+
+.quick-practice .section-label {
+  color: #aaa;
+}
+
+.practice-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.practice-buttons button {
+  padding: 12px 16px;
+  background: white;
+  color: #151515;
+  border-radius: 8px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .lesson-dashboard {
+    padding: 65px 5%;
+  }
+
+  .lesson-title h2 {
+    font-size: 42px;
+  }
+
+  .course-lesson {
+    gap: 12px;
+    padding: 15px;
+  }
+
+  .course-lesson-number {
+    width: 43px;
+    height: 43px;
+  }
+
+  .course-lesson-info p {
+    display: none;
+  }
+
+  .course-lesson-info h4 {
+    font-size: 14px;
+  }
+
+  .course-lesson button {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .quick-practice {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .practice-buttons {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .practice-buttons button {
+    width: 100%;
+  }
+}
+```
+
 ```
 
