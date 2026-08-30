@@ -1557,6 +1557,416 @@
 
 </section>
 ```
+    ```html
+<!-- ============================= -->
+<!-- LANGUAGE EXPLORER -->
+<!-- ============================= -->
+
+<section class="language-explorer" id="languageExplorer">
+
+  <div class="explorer-header">
+
+    <div>
+      <span class="section-label">EXPLORE</span>
+      <h2>Choose a language.</h2>
+      <p>
+        Learn a new language with structured lessons and interactive practice.
+      </p>
+    </div>
+
+    <button class="back-btn" onclick="backFromExplorer()">
+      ← Dashboard
+    </button>
+
+  </div>
+
+
+  <!-- SEARCH -->
+
+  <div class="language-search">
+
+    <span>⌕</span>
+
+    <input
+      type="text"
+      id="languageSearch"
+      placeholder="Search languages..."
+      oninput="filterLanguages()"
+    >
+
+  </div>
+
+
+  <!-- LANGUAGE GRID -->
+
+  <div class="explorer-grid" id="explorerGrid">
+
+
+    <!-- GERMAN -->
+
+    <div
+      class="explorer-language-card"
+      data-language="German"
+      onclick="selectLanguage('German','🇩🇪')">
+
+      <div class="explorer-flag">
+        🇩🇪
+      </div>
+
+      <div class="explorer-info">
+        <span>DEUTSCH</span>
+        <h3>German</h3>
+        <p>Beginner to advanced</p>
+      </div>
+
+      <span class="explorer-arrow">→</span>
+
+    </div>
+
+
+    <!-- SPANISH -->
+
+    <div
+      class="explorer-language-card"
+      data-language="Spanish"
+      onclick="selectLanguage('Spanish','🇪🇸')">
+
+      <div class="explorer-flag">
+        🇪🇸
+      </div>
+
+      <div class="explorer-info">
+        <span>ESPAÑOL</span>
+        <h3>Spanish</h3>
+        <p>Beginner to advanced</p>
+      </div>
+
+      <span class="explorer-arrow">→</span>
+
+    </div>
+
+
+    <!-- FRENCH -->
+
+    <div
+      class="explorer-language-card"
+      data-language="French"
+      onclick="selectLanguage('French','🇫🇷')">
+
+      <div class="explorer-flag">
+        🇫🇷
+      </div>
+
+      <div class="explorer-info">
+        <span>FRANÇAIS</span>
+        <h3>French</h3>
+        <p>Beginner to advanced</p>
+      </div>
+
+      <span class="explorer-arrow">→</span>
+
+    </div>
+
+
+    <!-- JAPANESE -->
+
+    <div
+      class="explorer-language-card"
+      data-language="Japanese"
+      onclick="selectLanguage('Japanese','🇯🇵')">
+
+      <div class="explorer-flag">
+        🇯🇵
+      </div>
+
+      <div class="explorer-info">
+        <span>日本語</span>
+        <h3>Japanese</h3>
+        <p>Beginner to advanced</p>
+      </div>
+
+      <span class="explorer-arrow">→</span>
+
+    </div>
+
+
+    <!-- KOREAN -->
+
+    <div
+      class="explorer-language-card"
+      data-language="Korean"
+      onclick="selectLanguage('Korean','🇰🇷')">
+
+      <div class="explorer-flag">
+        🇰🇷
+      </div>
+
+      <div class="explorer-info">
+        <span>한국어</span>
+        <h3>Korean</h3>
+        <p>Beginner to advanced</p>
+      </div>
+
+      <span class="explorer-arrow">→</span>
+
+    </div>
+
+
+    <!-- ITALIAN -->
+
+    <div
+      class="explorer-language-card"
+      data-language="Italian"
+      onclick="selectLanguage('Italian','🇮🇹')">
+
+      <div class="explorer-flag">
+        🇮🇹
+      </div>
+
+      <div class="explorer-info">
+        <span>ITALIANO</span>
+        <h3>Italian</h3>
+        <p>Beginner to advanced</p>
+      </div>
+
+      <span class="explorer-arrow">→</span>
+
+    </div>
+
+
+    <!-- PORTUGUESE -->
+
+    <div
+      class="explorer-language-card"
+      data-language="Portuguese"
+      onclick="selectLanguage('Portuguese','🇵🇹')">
+
+      <div class="explorer-flag">
+        🇵🇹
+      </div>
+
+      <div class="explorer-info">
+        <span>PORTUGUÊS</span>
+        <h3>Portuguese</h3>
+        <p>Beginner to advanced</p>
+      </div>
+
+      <span class="explorer-arrow">→</span>
+
+    </div>
+
+
+    <!-- CHINESE -->
+
+    <div
+      class="explorer-language-card"
+      data-language="Chinese"
+      onclick="selectLanguage('Chinese','🇨🇳')">
+
+      <div class="explorer-flag">
+        🇨🇳
+      </div>
+
+      <div class="explorer-info">
+        <span>中文</span>
+        <h3>Chinese</h3>
+        <p>Beginner to advanced</p>
+      </div>
+
+      <span class="explorer-arrow">→</span>
+
+    </div>
+
+
+  </div>
+
+
+  <div
+    class="no-language-results"
+    id="noLanguageResults">
+
+    No languages found.
+
+  </div>
+
+</section>
+
+
+<!-- ============================= -->
+<!-- LANGUAGE OVERVIEW -->
+<!-- ============================= -->
+
+<section
+  class="language-overview"
+  id="languageOverview">
+
+  <div class="language-overview-top">
+
+    <button
+      class="back-btn"
+      onclick="backToExplorer()">
+      ← Languages
+    </button>
+
+  </div>
+
+
+  <div class="selected-language-hero">
+
+    <div class="selected-language-flag" id="selectedLanguageFlag">
+      🇩🇪
+    </div>
+
+    <span class="section-label">
+      LANGUAGE COURSE
+    </span>
+
+    <h2 id="selectedLanguageName">
+      German
+    </h2>
+
+    <p>
+      Choose your level and start learning.
+    </p>
+
+  </div>
+
+
+  <!-- LEVELS -->
+
+  <div class="language-level-grid">
+
+
+    <div
+      class="level-card"
+      onclick="openLanguageLevel('A1')">
+
+      <div class="level-number">
+        A1
+      </div>
+
+      <div>
+        <span>BEGINNER</span>
+        <h3>Start from the basics</h3>
+        <p>
+          Greetings, vocabulary and simple sentences.
+        </p>
+      </div>
+
+      <strong>→</strong>
+
+    </div>
+
+
+    <div
+      class="level-card"
+      onclick="openLanguageLevel('A2')">
+
+      <div class="level-number">
+        A2
+      </div>
+
+      <div>
+        <span>ELEMENTARY</span>
+        <h3>Build your foundation</h3>
+        <p>
+          Everyday conversations and useful grammar.
+        </p>
+      </div>
+
+      <strong>→</strong>
+
+    </div>
+
+
+    <div
+      class="level-card"
+      onclick="openLanguageLevel('B1')">
+
+      <div class="level-number">
+        B1
+      </div>
+
+      <div>
+        <span>INTERMEDIATE</span>
+        <h3>Communicate confidently</h3>
+        <p>
+          Conversations, writing and practical situations.
+        </p>
+      </div>
+
+      <strong>→</strong>
+
+    </div>
+
+
+    <div
+      class="level-card"
+      onclick="openLanguageLevel('B2')">
+
+      <div class="level-number">
+        B2
+      </div>
+
+      <div>
+        <span>UPPER INTERMEDIATE</span>
+        <h3>Express yourself</h3>
+        <p>
+          Complex conversations and detailed expression.
+        </p>
+      </div>
+
+      <strong>→</strong>
+
+    </div>
+
+
+    <div
+      class="level-card"
+      onclick="openLanguageLevel('C1')">
+
+      <div class="level-number">
+        C1
+      </div>
+
+      <div>
+        <span>ADVANCED</span>
+        <h3>Master the language</h3>
+        <p>
+          Advanced communication and comprehension.
+        </p>
+      </div>
+
+      <strong>→</strong>
+
+    </div>
+
+
+    <div
+      class="level-card"
+      onclick="openLanguageLevel('C2')">
+
+      <div class="level-number">
+        C2
+      </div>
+
+      <div>
+        <span>PROFICIENCY</span>
+        <h3>Near-native level</h3>
+        <p>
+          Master advanced language use and nuance.
+        </p>
+      </div>
+
+      <strong>→</strong>
+
+    </div>
+
+  </div>
+
+</section>
+```
+
 
 
 
