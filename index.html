@@ -590,6 +590,391 @@
 
 </section>
 ```
+```html
+<!-- ============================= -->
+<!-- LESSON INTERFACE -->
+<!-- ============================= -->
+
+<section class="lesson-interface" id="lessonInterface">
+
+  <div class="lesson-interface-top">
+
+    <button class="back-btn" onclick="backToLessonList()">
+      ← Lessons
+    </button>
+
+    <div class="lesson-meta">
+      <span id="currentLessonNumber">LESSON 02</span>
+      <span>•</span>
+      <span id="currentLessonLevel">A1</span>
+    </div>
+
+  </div>
+
+
+  <!-- LESSON HEADER -->
+
+  <div class="lesson-hero">
+
+    <span class="section-label">GERMAN • A1</span>
+
+    <h2 id="currentLessonTitle">
+      Numbers & Time
+    </h2>
+
+    <p id="currentLessonDescription">
+      Learn numbers, dates and how to tell the time in everyday situations.
+    </p>
+
+  </div>
+
+
+  <!-- LESSON NAVIGATION -->
+
+  <div class="lesson-tabs">
+
+    <button class="lesson-tab active" onclick="showLessonTab('learn')">
+      📖 Learn
+    </button>
+
+    <button class="lesson-tab" onclick="showLessonTab('vocabulary')">
+      🧠 Vocabulary
+    </button>
+
+    <button class="lesson-tab" onclick="showLessonTab('practice')">
+      ✍️ Practice
+    </button>
+
+    <button class="lesson-tab" onclick="showLessonTab('quiz')">
+      📝 Quiz
+    </button>
+
+  </div>
+
+
+  <!-- ============================= -->
+  <!-- LEARN -->
+  <!-- ============================= -->
+
+  <div class="lesson-content lesson-tab-content active" id="learnContent">
+
+    <div class="content-card">
+
+      <span class="content-label">01 • INTRODUCTION</span>
+
+      <h3>Let's learn the basics</h3>
+
+      <p>
+        In this lesson, you'll learn how to use numbers and talk about
+        simple times in everyday conversations.
+      </p>
+
+    </div>
+
+
+    <div class="example-card">
+
+      <div class="example-language">
+        🇩🇪
+      </div>
+
+      <div>
+        <span class="example-label">GERMAN</span>
+
+        <h3>
+          Guten Morgen!
+        </h3>
+
+        <p>
+          Good morning!
+        </p>
+      </div>
+
+      <button onclick="playPronunciation('Guten Morgen')">
+        🔊
+      </button>
+
+    </div>
+
+
+    <div class="content-card">
+
+      <span class="content-label">02 • EXAMPLE</span>
+
+      <h3>Using numbers</h3>
+
+      <p>
+        Numbers are used when talking about age, prices, dates and time.
+      </p>
+
+      <div class="number-examples">
+
+        <div>
+          <strong>eins</strong>
+          <span>1</span>
+        </div>
+
+        <div>
+          <strong>zwei</strong>
+          <span>2</span>
+        </div>
+
+        <div>
+          <strong>drei</strong>
+          <span>3</span>
+        </div>
+
+        <div>
+          <strong>vier</strong>
+          <span>4</span>
+        </div>
+
+        <div>
+          <strong>fünf</strong>
+          <span>5</span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="lesson-next">
+
+      <button
+        class="primary-btn large-btn"
+        onclick="showLessonTab('vocabulary')">
+        Continue →
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ============================= -->
+  <!-- VOCABULARY -->
+  <!-- ============================= -->
+
+  <div
+    class="lesson-content lesson-tab-content"
+    id="vocabularyContent">
+
+    <div class="content-card">
+
+      <span class="content-label">VOCABULARY</span>
+
+      <h3>Important words</h3>
+
+      <p>
+        Learn these words before moving to the practice section.
+      </p>
+
+    </div>
+
+
+    <div class="vocabulary-grid">
+
+      <div class="vocabulary-card">
+
+        <div class="word-top">
+          <span>🇩🇪</span>
+
+          <button onclick="playPronunciation('eins')">
+            🔊
+          </button>
+        </div>
+
+        <h3>eins</h3>
+        <p>one</p>
+
+      </div>
+
+
+      <div class="vocabulary-card">
+
+        <div class="word-top">
+          <span>🇩🇪</span>
+
+          <button onclick="playPronunciation('zwei')">
+            🔊
+          </button>
+        </div>
+
+        <h3>zwei</h3>
+        <p>two</p>
+
+      </div>
+
+
+      <div class="vocabulary-card">
+
+        <div class="word-top">
+          <span>🇩🇪</span>
+
+          <button onclick="playPronunciation('drei')">
+            🔊
+          </button>
+        </div>
+
+        <h3>drei</h3>
+        <p>three</p>
+
+      </div>
+
+
+      <div class="vocabulary-card">
+
+        <div class="word-top">
+          <span>🇩🇪</span>
+
+          <button onclick="playPronunciation('vier')">
+            🔊
+          </button>
+        </div>
+
+        <h3>vier</h3>
+        <p>four</p>
+
+      </div>
+
+    </div>
+
+
+    <div class="lesson-next">
+
+      <button
+        class="primary-btn large-btn"
+        onclick="showLessonTab('practice')">
+        Start Practice →
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ============================= -->
+  <!-- PRACTICE -->
+  <!-- ============================= -->
+
+  <div
+    class="lesson-content lesson-tab-content"
+    id="practiceContent">
+
+    <div class="practice-question">
+
+      <span class="content-label">
+        QUESTION 01
+      </span>
+
+      <h3>
+        What does <strong>"zwei"</strong> mean?
+      </h3>
+
+      <div class="answer-options">
+
+        <button onclick="checkAnswer(this, false)">
+          One
+        </button>
+
+        <button onclick="checkAnswer(this, true)">
+          Two
+        </button>
+
+        <button onclick="checkAnswer(this, false)">
+          Three
+        </button>
+
+        <button onclick="checkAnswer(this, false)">
+          Four
+        </button>
+
+      </div>
+
+      <p id="practiceFeedback" class="practice-feedback"></p>
+
+    </div>
+
+
+    <div class="lesson-next">
+
+      <button
+        class="primary-btn large-btn"
+        onclick="showLessonTab('quiz')">
+        Continue to Quiz →
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ============================= -->
+  <!-- QUIZ -->
+  <!-- ============================= -->
+
+  <div
+    class="lesson-content lesson-tab-content"
+    id="quizContent">
+
+    <div class="quiz-card">
+
+      <div class="quiz-header">
+
+        <span class="content-label">
+          FINAL QUIZ
+        </span>
+
+        <span>
+          1 / 3
+        </span>
+
+      </div>
+
+      <h3>
+        Which word means "three"?
+      </h3>
+
+      <div class="answer-options">
+
+        <button onclick="checkQuizAnswer(this, false)">
+          eins
+        </button>
+
+        <button onclick="checkQuizAnswer(this, false)">
+          zwei
+        </button>
+
+        <button onclick="checkQuizAnswer(this, true)">
+          drei
+        </button>
+
+        <button onclick="checkQuizAnswer(this, false)">
+          vier
+        </button>
+
+      </div>
+
+      <p id="quizFeedback" class="practice-feedback"></p>
+
+    </div>
+
+
+    <div class="complete-lesson">
+
+      <button
+        class="primary-btn large-btn"
+        onclick="completeLesson()">
+        ✓ Complete Lesson
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+```
 
 
 
