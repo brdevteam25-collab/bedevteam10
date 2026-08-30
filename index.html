@@ -392,6 +392,205 @@
 
 </section>
 ```
+    ```html
+<!-- LESSON DASHBOARD -->
+<section class="lesson-dashboard" id="lessonDashboard">
+
+  <div class="lesson-top">
+
+    <button class="back-btn" onclick="backToLevels()">
+      ← Levels
+    </button>
+
+    <div class="lesson-title">
+      <span class="section-label" id="lessonLevelLabel">A1 • BEGINNER</span>
+      <h2 id="lessonLanguageTitle">German</h2>
+      <p>Build your foundation step by step.</p>
+    </div>
+
+  </div>
+
+
+  <!-- PROGRESS -->
+  <div class="learning-progress-card">
+
+    <div>
+      <span>Your progress</span>
+      <strong id="courseProgressText">0%</strong>
+    </div>
+
+    <div class="course-progress-track">
+      <div
+        class="course-progress-fill"
+        id="courseProgressFill"
+        style="width: 0%;">
+      </div>
+    </div>
+
+    <small>0 of 10 lessons completed</small>
+
+  </div>
+
+
+  <!-- LESSONS -->
+  <div class="lesson-list">
+
+    <div class="lesson-list-heading">
+      <div>
+        <span class="section-label">COURSE CONTENT</span>
+        <h3>A1 Lessons</h3>
+      </div>
+
+      <span class="lesson-count">10 Lessons</span>
+    </div>
+
+
+    <!-- LESSON 1 -->
+    <div class="course-lesson completed-lesson">
+
+      <div class="course-lesson-number">
+        ✓
+      </div>
+
+      <div class="course-lesson-info">
+        <span>LESSON 01</span>
+        <h4>Greetings & Introductions</h4>
+        <p>Learn basic greetings and introduce yourself.</p>
+      </div>
+
+      <button onclick="openLesson(1)">
+        Review →
+      </button>
+
+    </div>
+
+
+    <!-- LESSON 2 -->
+    <div class="course-lesson active-lesson">
+
+      <div class="course-lesson-number">
+        02
+      </div>
+
+      <div class="course-lesson-info">
+        <span>LESSON 02</span>
+        <h4>Numbers & Time</h4>
+        <p>Learn numbers, dates and how to tell the time.</p>
+      </div>
+
+      <button onclick="openLesson(2)">
+        Start →
+      </button>
+
+    </div>
+
+
+    <!-- LESSON 3 -->
+    <div class="course-lesson">
+
+      <div class="course-lesson-number">
+        03
+      </div>
+
+      <div class="course-lesson-info">
+        <span>LESSON 03</span>
+        <h4>Family & People</h4>
+        <p>Talk about your family and the people around you.</p>
+      </div>
+
+      <button onclick="openLesson(3)">
+        Start →
+      </button>
+
+    </div>
+
+
+    <!-- LESSON 4 -->
+    <div class="course-lesson">
+
+      <div class="course-lesson-number">
+        04
+      </div>
+
+      <div class="course-lesson-info">
+        <span>LESSON 04</span>
+        <h4>Everyday Activities</h4>
+        <p>Describe your daily routine and activities.</p>
+      </div>
+
+      <button onclick="openLesson(4)">
+        Start →
+      </button>
+
+    </div>
+
+
+    <!-- LESSON 5 -->
+    <div class="course-lesson locked-lesson">
+
+      <div class="course-lesson-number">
+        🔒
+      </div>
+
+      <div class="course-lesson-info">
+        <span>LESSON 05</span>
+        <h4>Food & Drinks</h4>
+        <p>Learn useful vocabulary for food and restaurants.</p>
+      </div>
+
+      <button disabled>
+        Locked
+      </button>
+
+    </div>
+
+
+    <!-- LESSON 6 -->
+    <div class="course-lesson locked-lesson">
+
+      <div class="course-lesson-number">
+        🔒
+      </div>
+
+      <div class="course-lesson-info">
+        <span>LESSON 06</span>
+        <h4>Places & Directions</h4>
+        <p>Learn how to ask for and give directions.</p>
+      </div>
+
+      <button disabled>
+        Locked
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- QUICK PRACTICE -->
+  <div class="quick-practice">
+
+    <div>
+      <span class="section-label">PRACTICE</span>
+      <h3>Ready to practice?</h3>
+      <p>Review vocabulary and test what you've learned.</p>
+    </div>
+
+    <div class="practice-buttons">
+      <button onclick="startPractice('vocabulary')">
+        🧠 Vocabulary
+      </button>
+
+      <button onclick="startPractice('quiz')">
+        📝 Quick Quiz
+      </button>
+    </div>
+
+  </div>
+
+</section>
+```
+
 
 
   </main>
