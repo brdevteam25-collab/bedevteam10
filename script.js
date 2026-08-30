@@ -112,5 +112,91 @@ function openLevel(level) {
   );
 
 }
+```javascript
+/* ============================= */
+/* LESSON DASHBOARD */
+/* ============================= */
+
+function openLevel(level) {
+
+  const levelSection =
+    document.querySelector(".learning-section");
+
+  const lessonDashboard =
+    document.getElementById("lessonDashboard");
+
+  const selectedLanguage =
+    document.getElementById("selectedLanguageTitle").textContent;
+
+  document.getElementById("lessonLevelLabel").textContent =
+    level + " • " + getLevelName(level);
+
+  document.getElementById("lessonLanguageTitle").textContent =
+    selectedLanguage;
+
+  levelSection.style.display = "none";
+  lessonDashboard.style.display = "block";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+function getLevelName(level) {
+
+  const names = {
+    A1: "BEGINNER",
+    A2: "ELEMENTARY",
+    B1: "INTERMEDIATE",
+    B2: "UPPER INTERMEDIATE",
+    C1: "ADVANCED",
+    C2: "PROFICIENCY"
+  };
+
+  return names[level] || "LEVEL";
+}
+
+
+function backToLevels() {
+
+  document.getElementById("lessonDashboard").style.display =
+    "none";
+
+  document.querySelector(".learning-section").style.display =
+    "block";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+function openLesson(lessonNumber) {
+
+  alert(
+    "Lesson " +
+    lessonNumber +
+    " will open here. The full lesson interface is next."
+  );
+
+}
+
+
+function startPractice(type) {
+
+  if (type === "vocabulary") {
+    alert("Vocabulary practice will open here.");
+  }
+
+  if (type === "quiz") {
+    alert("Quiz will open here.");
+  }
+
+}
+```
+
 ```
 
