@@ -2712,3 +2712,219 @@ footer p {
 
 ```
 
+```css
+/* ============================= */
+/* COURSE BUILDER */
+/* ============================= */
+
+.course-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.course-selector label,
+.lesson-input label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 10px;
+  font-weight: bold;
+  color: #666;
+}
+
+.course-selector select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 8px;
+}
+
+
+/* BUILDER */
+
+.lesson-builder {
+  display: none;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+.lesson-builder.active {
+  display: block;
+}
+
+.lesson-builder-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.lesson-builder-header h3 {
+  margin-top: 5px;
+}
+
+.lesson-input {
+  margin-bottom: 18px;
+}
+
+.lesson-input input,
+.lesson-input textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fafaf8;
+  outline: none;
+  font-family: inherit;
+  font-size: 12px;
+}
+
+.lesson-input textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.lesson-input .large-textarea {
+  min-height: 220px;
+}
+
+
+/* BUILDER SUBSECTION */
+
+.builder-subsection {
+  border-top: 1px solid #eee;
+  padding-top: 22px;
+  margin-top: 22px;
+}
+
+.builder-subsection-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.builder-subsection-header h4 {
+  margin-top: 4px;
+  font-size: 16px;
+}
+
+
+/* VOCABULARY */
+
+.vocabulary-row {
+  display: grid;
+  grid-template-columns: 0.8fr 0.8fr 1.4fr;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.vocabulary-row input,
+.quiz-builder-row input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  background: #fafaf8;
+  outline: none;
+  font-size: 11px;
+}
+
+
+/* QUIZ */
+
+.quiz-builder-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+
+/* LESSON LIST */
+
+.lesson-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lesson-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 14px;
+}
+
+.lesson-number {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #151515;
+  color: white;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.lesson-item-info {
+  flex: 1;
+}
+
+.lesson-item-info strong {
+  display: block;
+  font-size: 14px;
+}
+
+.lesson-item-info span {
+  display: block;
+  color: #888;
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+.lesson-item-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.lesson-item-actions button {
+  padding: 7px 10px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 7px;
+  font-size: 10px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  .course-selector {
+    grid-template-columns: 1fr;
+  }
+
+  .vocabulary-row {
+    grid-template-columns: 1fr;
+  }
+
+  .quiz-builder-row {
+    grid-template-columns: 1fr;
+  }
+
+  .lesson-item {
+    align-items: flex-start;
+  }
+
+}
+```
