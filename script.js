@@ -2075,3 +2075,189 @@ function escapeHTML(value) {
 
 }
 ```
+```javascript id="j8w2qa"
+/* ============================= */
+/* STUDENT LESSON CONNECTION */
+/* ============================= */
+
+
+/*
+ * Open lessons for selected language + level
+ */
+
+function openLanguageLevel(level) {
+
+  const language =
+    document.getElementById(
+      "selectedLanguageName"
+    ).textContent;
+
+
+  document.getElementById(
+    "languageOverview"
+  ).style.display = "none";
+
+
+  document.getElementById(
+    "studentLessons"
+  ).style.display = "block";
+
+
+  document.getElementById(
+    "studentSelectedLevel"
+  ).textContent = level;
+
+
+  document.getElementById(
+    "studentLessonsLanguage"
+  ).textContent =
+    language.toUpperCase();
+
+
+  document.getElementById(
+    "studentLessonsTitle"
+  ).textContent =
+    level + " Beginner";
+
+
+  renderStudentLessons(
+    language,
+    level
+  );
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+/*
+ * Render available lessons
+ */
+
+function renderStudentLessons(
+  language,
+  level
+) {
+
+  const grid =
+    document.getElementById(
+      "studentLessonsGrid"
+    );
+
+
+  const empty =
+    document.getElementById(
+      "studentNoLessons"
+    );
+
+
+  const lessons =
+    getLessons().filter(
+      lesson =>
+        lesson.language === language &&
+        lesson.level === level
+    );
+
+
+  grid.innerHTML = "";
+
+
+  if (!lessons.length) {
+
+    grid.style.display = "none";
+    empty.style.display = "block";
+
+    return;
+
+  }
+
+
+  grid.style.display = "grid";
+  empty.style.display = "none";
+
+
+  lessons.forEach(
+    (lesson, index) => {
+
+      const card =
+        document.createElement("div");
+
+
+      card.className =
+        "student-lesson-card";
+
+
+      card.onclick = function() {
+
+        openStudentLesson(
+          lesson.id
+        );
+
+      };
+
+
+      card.innerHTML = `
+
+        <div class="student-lesson-number">
+          ${String(index + 1).padStart(2, "0")}
+        </div>
+
+        <div class="student-lesson-card-info">
+
+          <span>
+            ${lesson.level}
+          </span>
+
+          <h3>
+            ${escapeHTML(lesson.title)}
+          </h3>
+
+          <p>
+            ${escapeHTML(lesson.description)}
+          </p>
+
+        </div>
+
+        <div class="student-lesson-card-arrow">
+          →
+        </div>
+
+      `;
+
+
+      grid.appendChild(card);
+
+    }
+  );
+
+}
+
+
+/*
+ * Back to language overview
+ */
+
+function backToLanguageOverview() {
+
+  document.getElementById(
+    "studentLessons"
+  ).style.display = "none";
+
+
+  document.getElementById(
+    "languageOverview"
+  ).style.display = "block";
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+```
+
