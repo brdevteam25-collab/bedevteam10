@@ -1963,360 +1963,269 @@
     </div>
 
   </div>
-
-</section>
-```
-
 ```html
 <!-- ============================= -->
-<!-- ADMIN PANEL -->
+<!-- COURSE BUILDER -->
 <!-- ============================= -->
 
-<section class="admin-panel" id="adminPanel">
+<div
+  class="admin-section"
+  id="adminLessons">
 
-  <div class="admin-header">
+  <div class="admin-section-header">
 
     <div>
-      <span class="section-label">ADMIN PANEL</span>
-      <h2>Manage your courses.</h2>
-      <p>Add languages, manage levels and control your learning content.</p>
+      <span class="section-label">COURSE BUILDER</span>
+      <h3>Build lessons</h3>
     </div>
 
     <button
-      class="back-btn"
-      onclick="closeAdminPanel()">
-      ← Exit Admin
+      class="primary-btn"
+      onclick="openLessonCreator()">
+      + Add Lesson
     </button>
 
   </div>
 
 
-  <!-- ADMIN NAV -->
+  <!-- COURSE SELECTOR -->
 
-  <div class="admin-nav">
+  <div class="course-selector">
 
-    <button
-      class="admin-nav-btn active"
-      onclick="showAdminSection('languages')">
-      🌍 Languages
-    </button>
+    <div>
 
-    <button
-      class="admin-nav-btn"
-      onclick="showAdminSection('lessons')">
-      📚 Lessons
-    </button>
+      <label>Language</label>
 
-    <button
-      class="admin-nav-btn"
-      onclick="showAdminSection('users')">
-      👥 Users
-    </button>
+      <select
+        id="courseLanguage"
+        onchange="loadCourseLevels()">
+      </select>
 
-    <button
-      class="admin-nav-btn"
-      onclick="showAdminSection('settings')">
-      ⚙️ Settings
-    </button>
+    </div>
+
+
+    <div>
+
+      <label>Level</label>
+
+      <select
+        id="courseLevel"
+        onchange="loadLessons()">
+
+        <option value="A1">A1 — Beginner</option>
+        <option value="A2">A2 — Elementary</option>
+        <option value="B1">B1 — Intermediate</option>
+        <option value="B2">B2 — Upper Intermediate</option>
+        <option value="C1">C1 — Advanced</option>
+        <option value="C2">C2 — Proficiency</option>
+
+      </select>
+
+    </div>
 
   </div>
 
 
-  <!-- ============================= -->
-  <!-- LANGUAGES -->
-  <!-- ============================= -->
+  <!-- LESSON CREATOR -->
 
   <div
-    class="admin-section active"
-    id="adminLanguages">
+    class="lesson-builder"
+    id="lessonBuilder">
 
-    <div class="admin-section-header">
+    <div class="lesson-builder-header">
 
       <div>
-        <span class="section-label">COURSES</span>
-        <h3>Languages</h3>
+
+        <span class="section-label">
+          NEW LESSON
+        </span>
+
+        <h3>Create a lesson</h3>
+
       </div>
 
       <button
-        class="primary-btn"
-        onclick="openAddLanguage()">
-        + Add Language
+        class="close-admin-form"
+        onclick="closeLessonCreator()">
+        ×
       </button>
 
     </div>
 
 
-    <!-- ADD LANGUAGE FORM -->
+    <div class="lesson-input">
 
-    <div
-      class="admin-form-card"
-      id="addLanguageForm">
+      <label>Lesson title</label>
 
-      <div class="admin-form-header">
+      <input
+        type="text"
+        id="lessonTitle"
+        placeholder="Example: Greetings and Introductions">
 
-        <div>
-          <span class="section-label">NEW COURSE</span>
-          <h3>Add a language</h3>
-        </div>
-
-        <button
-          class="close-admin-form"
-          onclick="closeAddLanguage()">
-          ×
-        </button>
-
-      </div>
+    </div>
 
 
-      <div class="admin-input-grid">
+    <div class="lesson-input">
 
-        <div>
+      <label>Lesson description</label>
 
-          <label>Language name</label>
+      <textarea
+        id="lessonDescription"
+        placeholder="What will students learn in this lesson?">
+      </textarea>
 
-          <input
-            type="text"
-            id="newLanguageName"
-            placeholder="Example: German">
-
-        </div>
+    </div>
 
 
-        <div>
+    <div class="lesson-input">
 
-          <label>Native name</label>
+      <label>Lesson content</label>
 
-          <input
-            type="text"
-            id="newLanguageNative"
-            placeholder="Example: Deutsch">
+      <textarea
+        id="lessonContent"
+        class="large-textarea"
+        placeholder="Write the lesson explanation here...">
+      </textarea>
 
-        </div>
+    </div>
 
+
+    <!-- VOCABULARY -->
+
+    <div class="builder-subsection">
+
+      <div class="builder-subsection-header">
 
         <div>
 
-          <label>Flag emoji</label>
+          <span class="section-label">
+            VOCABULARY
+          </span>
 
-          <input
-            type="text"
-            id="newLanguageFlag"
-            placeholder="🇩🇪"
-            maxlength="4">
+          <h4>Lesson words</h4>
 
         </div>
-
-
-        <div>
-
-          <label>Course status</label>
-
-          <select id="newLanguageStatus">
-
-            <option value="published">
-              Published
-            </option>
-
-            <option value="draft">
-              Draft
-            </option>
-
-          </select>
-
-        </div>
-
-      </div>
-
-
-      <div class="admin-form-actions">
 
         <button
           class="secondary-btn"
-          onclick="closeAddLanguage()">
-          Cancel
+          onclick="addVocabularyRow()">
+          + Add word
         </button>
 
-        <button
-          class="primary-btn"
-          onclick="addNewLanguage()">
-          Save Language
-        </button>
+      </div>
+
+
+      <div id="vocabularyRows">
+
+        <div class="vocabulary-row">
+
+          <input
+            type="text"
+            placeholder="Word">
+
+          <input
+            type="text"
+            placeholder="Meaning">
+
+          <input
+            type="text"
+            placeholder="Example sentence">
+
+        </div>
 
       </div>
 
     </div>
 
 
-    <!-- LANGUAGE TABLE -->
+    <!-- QUIZ -->
 
-    <div class="admin-language-table">
+    <div class="builder-subsection">
 
-      <div class="admin-table-heading">
+      <div class="builder-subsection-header">
 
-        <span>LANGUAGE</span>
-        <span>LEVELS</span>
-        <span>STATUS</span>
-        <span>ACTIONS</span>
+        <div>
 
-      </div>
+          <span class="section-label">
+            PRACTICE
+          </span>
 
+          <h4>Quiz question</h4>
 
-      <div id="adminLanguageList">
-
-        <!-- Languages will load here -->
+        </div>
 
       </div>
 
-    </div>
 
-  </div>
+      <div id="quizRows">
 
+        <div class="quiz-builder-row">
 
-  <!-- ============================= -->
-  <!-- LESSON MANAGEMENT -->
-  <!-- ============================= -->
+          <input
+            type="text"
+            placeholder="Question">
 
-  <div
-    class="admin-section"
-    id="adminLessons">
+          <input
+            type="text"
+            placeholder="Option A">
 
-    <div class="admin-section-header">
+          <input
+            type="text"
+            placeholder="Option B">
 
-      <div>
-        <span class="section-label">CONTENT</span>
-        <h3>Lessons</h3>
+          <input
+            type="text"
+            placeholder="Option C">
+
+          <input
+            type="text"
+            placeholder="Correct answer">
+
+        </div>
+
       </div>
+
 
       <button
-        class="primary-btn"
-        onclick="openLessonCreator()">
-        + Add Lesson
+        class="secondary-btn"
+        onclick="addQuizRow()">
+        + Add question
       </button>
 
     </div>
 
 
-    <div class="admin-empty">
+    <div class="admin-form-actions">
 
-      <span>📚</span>
+      <button
+        class="secondary-btn"
+        onclick="closeLessonCreator()">
+        Cancel
+      </button>
 
-      <h3>No lesson selected</h3>
-
-      <p>
-        Select a language and level to manage lessons.
-      </p>
+      <button
+        class="primary-btn"
+        onclick="saveLesson()">
+        Save Lesson
+      </button>
 
     </div>
 
   </div>
 
 
-  <!-- ============================= -->
-  <!-- USERS -->
-  <!-- ============================= -->
+  <!-- LESSON LIST -->
 
   <div
-    class="admin-section"
-    id="adminUsers">
+    class="lesson-list"
+    id="lessonList">
 
-    <div class="admin-section-header">
-
-      <div>
-        <span class="section-label">ACCOUNTS</span>
-        <h3>Students</h3>
-      </div>
-
-    </div>
-
-
-    <div class="admin-stats">
-
-      <div>
-        <small>Total students</small>
-        <strong>0</strong>
-      </div>
-
-      <div>
-        <small>Active today</small>
-        <strong>0</strong>
-      </div>
-
-      <div>
-        <small>Courses enrolled</small>
-        <strong>0</strong>
-      </div>
-
-    </div>
+    <!-- Lessons appear here -->
 
   </div>
 
-
-  <!-- ============================= -->
-  <!-- SETTINGS -->
-  <!-- ============================= -->
-
-  <div
-    class="admin-section"
-    id="adminSettings">
-
-    <div class="admin-section-header">
-
-      <div>
-        <span class="section-label">SYSTEM</span>
-        <h3>Settings</h3>
-      </div>
-
-    </div>
-
-
-    <div class="admin-settings-card">
-
-      <div>
-        <strong>Website status</strong>
-        <p>Control whether students can access the platform.</p>
-      </div>
-
-      <label class="toggle">
-
-        <input
-          type="checkbox"
-          checked>
-
-        <span></span>
-
-      </label>
-
-    </div>
-
-
-    <div class="admin-settings-card">
-
-      <div>
-        <strong>New user registration</strong>
-        <p>Allow new students to create accounts.</p>
-      </div>
-
-      <label class="toggle">
-
-        <input
-          type="checkbox"
-          checked>
-
-        <span></span>
-
-      </label>
-
-    </div>
-
-  </div>
-
-</section>
+</div>
 ```
-
-
-
-
-
   </main>
 
 
