@@ -2226,6 +2226,128 @@
 
 </div>
 ```
+ ```html
+<!-- ============================= -->
+<!-- STUDENT LESSON VIEWER -->
+<!-- ============================= -->
+
+<section
+  class="student-lesson-viewer"
+  id="studentLessonViewer">
+
+  <div class="lesson-viewer-top">
+
+    <button
+      class="back-btn"
+      onclick="backToLanguageLevels()">
+      ← Back
+    </button>
+
+    <span
+      class="lesson-progress-label"
+      id="studentLessonLevel">
+      A1
+    </span>
+
+  </div>
+
+
+  <!-- LESSON HEADER -->
+
+  <div class="student-lesson-header">
+
+    <span
+      class="section-label"
+      id="studentLessonLanguage">
+      GERMAN
+    </span>
+
+    <h1 id="studentLessonTitle">
+      Lesson title
+    </h1>
+
+    <p id="studentLessonDescription">
+      Lesson description
+    </p>
+
+  </div>
+
+
+  <!-- LESSON CONTENT -->
+
+  <div class="student-lesson-content">
+
+    <article class="lesson-content-card">
+
+      <div class="lesson-content-heading">
+
+        <span>LESSON</span>
+
+        <h2>Learn</h2>
+
+      </div>
+
+      <div
+        class="lesson-main-text"
+        id="studentLessonContent">
+      </div>
+
+    </article>
+
+
+    <!-- VOCABULARY -->
+
+    <article class="lesson-content-card">
+
+      <div class="lesson-content-heading">
+
+        <span>VOCABULARY</span>
+
+        <h2>Words to remember</h2>
+
+      </div>
+
+      <div
+        class="student-vocabulary"
+        id="studentVocabulary">
+      </div>
+
+    </article>
+
+
+    <!-- QUIZ -->
+
+    <article class="lesson-content-card">
+
+      <div class="lesson-content-heading">
+
+        <span>PRACTICE</span>
+
+        <h2>Quick quiz</h2>
+
+      </div>
+
+      <div
+        id="studentQuiz">
+      </div>
+
+      <button
+        class="primary-btn quiz-submit-btn"
+        onclick="submitStudentQuiz()">
+        Check answers
+      </button>
+
+      <div
+        class="quiz-result"
+        id="quizResult">
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+```
   </main>
 
 
