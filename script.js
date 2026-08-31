@@ -1726,3 +1726,352 @@ document.addEventListener(
   }
 );
 ```
+```javascript
+/* ============================= */
+/* STUDENT LESSON VIEWER LOGIC */
+/* ============================= */
+
+let currentStudentLesson = null;
+
+
+/* OPEN LESSON */
+
+function openStudentLesson(lessonId) {
+
+  const lessons =
+    getLessons();
+
+  const lesson =
+    lessons.find(
+      item => item.id === lessonId
+    );
+
+  if (!lesson) {
+
+    alert("Lesson not found.");
+
+    return;
+
+  }
+
+
+  currentStudentLesson =
+    lesson;
+
+
+  /* Hide other sections */
+
+  document.querySelectorAll("main > section")
+    .forEach(section => {
+
+      section.style.display = "none";
+
+    });
+
+
+  /* Show viewer */
+
+  document.getElementById(
+    "studentLessonViewer"
+  ).style.display = "block";
+
+
+  /* Header */
+
+  document.getElementById(
+    "studentLessonLanguage"
+  ).textContent =
+    lesson.language.toUpperCase();
+
+
+  document.getElementById(
+    "studentLessonLevel"
+  ).textContent =
+    lesson.level;
+
+
+  document.getElementById(
+    "studentLessonTitle"
+  ).textContent =
+    lesson.title;
+
+
+  document.getElementById(
+    "studentLessonDescription"
+  ).textContent =
+    lesson.description;
+
+
+  /* Content */
+
+  document.getElementById(
+    "studentLessonContent"
+  ).textContent =
+    lesson.content;
+
+
+  renderStudentVocabulary(
+    lesson.vocabulary
+  );
+
+
+  renderStudentQuiz(
+    lesson.quiz
+  );
+
+
+  document.getElementById(
+    "quizResult"
+  ).style.display = "none";
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+/* VOCABULARY */
+
+function renderStudentVocabulary(
+  vocabulary
+) {
+
+  const container =
+    document.getElementById(
+      "studentVocabulary"
+    );
+
+
+  container.innerHTML = "";
+
+
+  if (!vocabulary || !vocabulary.length) {
+
+    container.innerHTML = `
+      <p style="color:#888;font-size:12px;">
+        No vocabulary added yet.
+      </p>
+    `;
+
+    return;
+
+  }
+
+
+  vocabulary.forEach(word => {
+
+    const row =
+      document.createElement("div");
+
+    row.className =
+      "student-vocab-row";
+
+
+    row.innerHTML = `
+
+      <div class="student-vocab-word">
+        ${escapeHTML(word.word)}
+      </div>
+
+      <div class="student-vocab-meaning">
+        ${escapeHTML(word.meaning)}
+      </div>
+
+      <div class="student-vocab-example">
+        ${escapeHTML(word.example)}
+      </div>
+
+    `;
+
+
+    container.appendChild(row);
+
+  });
+
+}
+
+
+/* QUIZ */
+
+function renderStudentQuiz(
+  quiz
+) {
+
+  const container =
+    document.getElementById(
+      "studentQuiz"
+    );
+
+
+  container.innerHTML = "";
+
+
+  if (!quiz || !quiz.length) {
+
+    container.innerHTML = `
+      <p style="color:#888;font-size:12px;">
+        No quiz questions added yet.
+      </p>
+    `;
+
+    return;
+
+  }
+
+
+  quiz.forEach(
+    (question, questionIndex) => {
+
+      const box =
+        document.createElement("div");
+
+      box.className =
+        "student-quiz-question";
+
+
+      let optionsHTML = "";
+
+
+      question.options.forEach(
+        (option, optionIndex) => {
+
+          if (!option) return;
+
+
+          optionsHTML += `
+
+            <label class="quiz-option">
+
+              <input
+                type="radio"
+                name="question-${questionIndex}"
+                value="${escapeHTML(option)}">
+
+              ${escapeHTML(option)}
+
+            </label>
+
+          `;
+
+        }
+      );
+
+
+      box.innerHTML = `
+
+        <h4>
+          ${questionIndex + 1}.
+          ${escapeHTML(question.question)}
+        </h4>
+
+        ${optionsHTML}
+
+      `;
+
+
+      container.appendChild(box);
+
+    }
+  );
+
+}
+
+
+/* CHECK QUIZ */
+
+function submitStudentQuiz() {
+
+  if (
+    !currentStudentLesson ||
+    !currentStudentLesson.quiz.length
+  ) {
+
+    return;
+
+  }
+
+
+  let score = 0;
+
+
+  currentStudentLesson.quiz.forEach(
+    (question, index) => {
+
+      const selected =
+        document.querySelector(
+          `input[name="question-${index}"]:checked`
+        );
+
+
+      if (
+        selected &&
+        selected.value.trim().toLowerCase() ===
+        question.answer.trim().toLowerCase()
+      ) {
+
+        score++;
+
+      }
+
+    }
+  );
+
+
+  const total =
+    currentStudentLesson.quiz.length;
+
+
+  const result =
+    document.getElementById(
+      "quizResult"
+    );
+
+
+  result.style.display = "block";
+
+
+  result.textContent =
+    `You scored ${score} / ${total}.`;
+
+}
+
+
+/* BACK */
+
+function backToLanguageLevels() {
+
+  document.getElementById(
+    "studentLessonViewer"
+  ).style.display = "none";
+
+
+  document.getElementById(
+    "languageOverview"
+  ).style.display = "block";
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+/* SECURITY HELPER */
+
+function escapeHTML(value) {
+
+  const div =
+    document.createElement("div");
+
+  div.textContent =
+    value || "";
+
+  return div.innerHTML;
+
+}
+```
