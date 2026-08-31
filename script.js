@@ -1125,219 +1125,604 @@ function openLessonCreator() {
 }
 ```
 ```
-```css
+
+```javascript
 /* ============================= */
-/* COURSE BUILDER */
+/* COURSE BUILDER LOGIC */
 /* ============================= */
 
-.course-selector {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 20px;
-}
+function getLessons() {
 
-.course-selector label,
-.lesson-input label {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 10px;
-  font-weight: bold;
-  color: #666;
-}
+  const saved =
+    localStorage.getItem("tutorLessons");
 
-.course-selector select {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  background: white;
-  border-radius: 8px;
+  return saved
+    ? JSON.parse(saved)
+    : [];
+
 }
 
 
-/* BUILDER */
+function saveLessonsData(lessons) {
 
-.lesson-builder {
-  display: none;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 16px;
-  padding: 25px;
-  margin-bottom: 20px;
-}
+  localStorage.setItem(
+    "tutorLessons",
+    JSON.stringify(lessons)
+  );
 
-.lesson-builder.active {
-  display: block;
-}
-
-.lesson-builder-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 25px;
-}
-
-.lesson-builder-header h3 {
-  margin-top: 5px;
-}
-
-.lesson-input {
-  margin-bottom: 18px;
-}
-
-.lesson-input input,
-.lesson-input textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: #fafaf8;
-  outline: none;
-  font-family: inherit;
-  font-size: 12px;
-}
-
-.lesson-input textarea {
-  min-height: 100px;
-  resize: vertical;
-}
-
-.lesson-input .large-textarea {
-  min-height: 220px;
 }
 
 
-/* BUILDER SUBSECTION */
+/* OPEN CREATOR */
 
-.builder-subsection {
-  border-top: 1px solid #eee;
-  padding-top: 22px;
-  margin-top: 22px;
-}
+function openLessonCreator() {
 
-.builder-subsection-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
+  const language =
+    document.getElementById("courseLanguage");
 
-.builder-subsection-header h4 {
-  margin-top: 4px;
-  font-size: 16px;
-}
+  if (!language.value) {
 
+    alert("Please add a language first.");
 
-/* VOCABULARY */
+    return;
 
-.vocabulary-row {
-  display: grid;
-  grid-template-columns: 0.8fr 0.8fr 1.4fr;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-
-.vocabulary-row input,
-.quiz-builder-row input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 7px;
-  background: #fafaf8;
-  outline: none;
-  font-size: 11px;
-}
-
-
-/* QUIZ */
-
-.quiz-builder-row {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-
-
-/* LESSON LIST */
-
-.lesson-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.lesson-item {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 20px;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 14px;
-}
-
-.lesson-number {
-  width: 42px;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #151515;
-  color: white;
-  border-radius: 10px;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.lesson-item-info {
-  flex: 1;
-}
-
-.lesson-item-info strong {
-  display: block;
-  font-size: 14px;
-}
-
-.lesson-item-info span {
-  display: block;
-  color: #888;
-  font-size: 10px;
-  margin-top: 4px;
-}
-
-.lesson-item-actions {
-  display: flex;
-  gap: 5px;
-}
-
-.lesson-item-actions button {
-  padding: 7px 10px;
-  border: 1px solid #ddd;
-  background: white;
-  border-radius: 7px;
-  font-size: 10px;
-}
-
-
-/* MOBILE */
-
-@media (max-width: 700px) {
-
-  .course-selector {
-    grid-template-columns: 1fr;
   }
 
-  .vocabulary-row {
-    grid-template-columns: 1fr;
-  }
 
-  .quiz-builder-row {
-    grid-template-columns: 1fr;
-  }
-
-  .lesson-item {
-    align-items: flex-start;
-  }
+  document.getElementById("lessonBuilder")
+    .classList.add("active");
 
 }
+
+
+/* CLOSE CREATOR */
+
+function closeLessonCreator() {
+
+  document.getElementById("lessonBuilder")
+    .classList.remove("active");
+
+}
+
+
+/* LOAD LANGUAGES */
+
+function loadCourseLanguages() {
+
+  const select =
+    document.getElementById("courseLanguage");
+
+  if (!select) return;
+
+
+  const languages =
+    getLanguages();
+
+
+  select.innerHTML = "";
+
+
+  languages
+    .filter(language => language.status === "Published")
+    .forEach(language => {
+
+      const option =
+        document.createElement("option");
+
+      option.value =
+        language.name;
+
+      option.textContent =
+        language.flag +
+        " " +
+        language.name;
+
+      select.appendChild(option);
+
+    });
+
+
+  loadLessons();
+
+}
+
+
+/* LEVEL CHANGE */
+
+function loadCourseLevels() {
+
+  loadLessons();
+
+}
+
+
+/* ADD VOCABULARY */
+
+function addVocabularyRow() {
+
+  const container =
+    document.getElementById("vocabularyRows");
+
+
+  const row =
+    document.createElement("div");
+
+  row.className =
+    "vocabulary-row";
+
+
+  row.innerHTML = `
+
+    <input
+      type="text"
+      placeholder="Word">
+
+    <input
+      type="text"
+      placeholder="Meaning">
+
+    <input
+      type="text"
+      placeholder="Example sentence">
+
+  `;
+
+
+  container.appendChild(row);
+
+}
+
+
+/* ADD QUIZ */
+
+function addQuizRow() {
+
+  const container =
+    document.getElementById("quizRows");
+
+
+  const row =
+    document.createElement("div");
+
+  row.className =
+    "quiz-builder-row";
+
+
+  row.innerHTML = `
+
+    <input
+      type="text"
+      placeholder="Question">
+
+    <input
+      type="text"
+      placeholder="Option A">
+
+    <input
+      type="text"
+      placeholder="Option B">
+
+    <input
+      type="text"
+      placeholder="Option C">
+
+    <input
+      type="text"
+      placeholder="Correct answer">
+
+  `;
+
+
+  container.appendChild(row);
+
+}
+
+
+/* SAVE LESSON */
+
+function saveLesson() {
+
+  const language =
+    document.getElementById("courseLanguage").value;
+
+  const level =
+    document.getElementById("courseLevel").value;
+
+  const title =
+    document.getElementById("lessonTitle").value.trim();
+
+  const description =
+    document.getElementById("lessonDescription").value.trim();
+
+  const content =
+    document.getElementById("lessonContent").value.trim();
+
+
+  if (!title || !description || !content) {
+
+    alert(
+      "Please enter the lesson title, description and content."
+    );
+
+    return;
+
+  }
+
+
+  /* VOCABULARY */
+
+  const vocabulary = [];
+
+
+  document
+    .querySelectorAll("#vocabularyRows .vocabulary-row")
+    .forEach(row => {
+
+      const inputs =
+        row.querySelectorAll("input");
+
+
+      if (
+        inputs[0].value.trim() ||
+        inputs[1].value.trim()
+      ) {
+
+        vocabulary.push({
+
+          word:
+            inputs[0].value.trim(),
+
+          meaning:
+            inputs[1].value.trim(),
+
+          example:
+            inputs[2].value.trim()
+
+        });
+
+      }
+
+    });
+
+
+  /* QUIZ */
+
+  const quiz = [];
+
+
+  document
+    .querySelectorAll("#quizRows .quiz-builder-row")
+    .forEach(row => {
+
+      const inputs =
+        row.querySelectorAll("input");
+
+
+      if (inputs[0].value.trim()) {
+
+        quiz.push({
+
+          question:
+            inputs[0].value.trim(),
+
+          options: [
+
+            inputs[1].value.trim(),
+            inputs[2].value.trim(),
+            inputs[3].value.trim()
+
+          ],
+
+          answer:
+            inputs[4].value.trim()
+
+        });
+
+      }
+
+    });
+
+
+  /* LESSON OBJECT */
+
+  const lesson = {
+
+    id:
+      Date.now(),
+
+    language:
+      language,
+
+    level:
+      level,
+
+    title:
+      title,
+
+    description:
+      description,
+
+    content:
+      content,
+
+    vocabulary:
+      vocabulary,
+
+    quiz:
+      quiz,
+
+    createdAt:
+      new Date().toISOString()
+
+  };
+
+
+  const lessons =
+    getLessons();
+
+
+  lessons.push(lesson);
+
+  saveLessonsData(lessons);
+
+
+  renderLessons();
+
+  resetLessonBuilder();
+
+  closeLessonCreator();
+
+
+  alert(
+    "Lesson created successfully!"
+  );
+
+}
+
+
+/* RENDER */
+
+function renderLessons() {
+
+  const container =
+    document.getElementById("lessonList");
+
+  if (!container) return;
+
+
+  const language =
+    document.getElementById("courseLanguage").value;
+
+  const level =
+    document.getElementById("courseLevel").value;
+
+
+  const lessons =
+    getLessons().filter(
+      lesson =>
+        lesson.language === language &&
+        lesson.level === level
+    );
+
+
+  container.innerHTML = "";
+
+
+  if (!lessons.length) {
+
+    container.innerHTML = `
+
+      <div class="admin-empty">
+
+        <span>📖</span>
+
+        <h3>No lessons yet</h3>
+
+        <p>
+          Create the first lesson for this level.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  lessons.forEach((lesson, index) => {
+
+    const item =
+      document.createElement("div");
+
+    item.className =
+      "lesson-item";
+
+
+    item.innerHTML = `
+
+      <div class="lesson-number">
+        ${index + 1}
+      </div>
+
+      <div class="lesson-item-info">
+
+        <strong>
+          ${lesson.title}
+        </strong>
+
+        <span>
+          ${lesson.description}
+        </span>
+
+      </div>
+
+      <div class="lesson-item-actions">
+
+        <button
+          onclick="previewLesson(${lesson.id})">
+          Preview
+        </button>
+
+        <button
+          onclick="deleteLesson(${lesson.id})">
+          Delete
+        </button>
+
+      </div>
+
+    `;
+
+
+    container.appendChild(item);
+
+  });
+
+}
+
+
+/* LEVEL / LANGUAGE LOAD */
+
+function loadLessons() {
+
+  renderLessons();
+
+}
+
+
+/* DELETE */
+
+function deleteLesson(id) {
+
+  const confirmed =
+    confirm(
+      "Delete this lesson?"
+    );
+
+
+  if (!confirmed) return;
+
+
+  const lessons =
+    getLessons().filter(
+      lesson =>
+        lesson.id !== id
+    );
+
+
+  saveLessonsData(lessons);
+
+  renderLessons();
+
+}
+
+
+/* PREVIEW */
+
+function previewLesson(id) {
+
+  const lesson =
+    getLessons().find(
+      item =>
+        item.id === id
+    );
+
+
+  if (!lesson) return;
+
+
+  alert(
+
+    lesson.title +
+    "\n\n" +
+
+    lesson.description +
+    "\n\n" +
+
+    "Vocabulary: " +
+    lesson.vocabulary.length +
+    "\n" +
+
+    "Quiz questions: " +
+    lesson.quiz.length
+
+  );
+
+}
+
+
+/* RESET */
+
+function resetLessonBuilder() {
+
+  document.getElementById("lessonTitle").value = "";
+
+  document.getElementById("lessonDescription").value = "";
+
+  document.getElementById("lessonContent").value = "";
+
+
+  document.getElementById("vocabularyRows").innerHTML = `
+
+    <div class="vocabulary-row">
+
+      <input
+        type="text"
+        placeholder="Word">
+
+      <input
+        type="text"
+        placeholder="Meaning">
+
+      <input
+        type="text"
+        placeholder="Example sentence">
+
+    </div>
+
+  `;
+
+
+  document.getElementById("quizRows").innerHTML = `
+
+    <div class="quiz-builder-row">
+
+      <input
+        type="text"
+        placeholder="Question">
+
+      <input
+        type="text"
+        placeholder="Option A">
+
+      <input
+        type="text"
+        placeholder="Option B">
+
+      <input
+        type="text"
+        placeholder="Option C">
+
+      <input
+        type="text"
+        placeholder="Correct answer">
+
+    </div>
+
+  `;
+
+}
+
+
+/* INITIALIZE */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function() {
+
+    loadCourseLanguages();
+
+  }
+);
 ```
